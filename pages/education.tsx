@@ -1,4 +1,4 @@
-import Divier from "../components/divider";
+import Divider from "../components/divider";
 import Title from "../components/title";
 import React from "react";
 
@@ -42,7 +42,7 @@ function Education() {
         </div>
 
         <div className="button margTop ofsInTop tCenter">
-          <Divier />
+          <Divider />
         </div>
       </div>
     </section>

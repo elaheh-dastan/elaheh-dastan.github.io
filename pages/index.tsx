@@ -15,7 +15,7 @@ export default function Home({ resumeTag }: HomeProps) {
         <div className="content">
           <div className="block-content margBSmall">
             <div className="profile margBSmall">
-              <h1>Elahe Dastan</h1>
+              <h1>Elaheh Dastan</h1>
               <h3>Data Scientist, Backend developer</h3>
             </div>
             <div className="row">
@@ -37,7 +37,7 @@ export default function Home({ resumeTag }: HomeProps) {
                   src="/me-2.jpg"
                   width={1024}
                   height={1024}
-                  alt="Elahe Dastan"
+                  alt="Elaheh Dastan"
                   className="img-fluid rounded"
                 />
               </div>
@@ -51,7 +51,7 @@ export default function Home({ resumeTag }: HomeProps) {
               <a
                 target="_blank"
                 rel="noreferrer"
-                href={`https://github.com/elahe-dastan/elahe-dastan.pdf/releases/download/${resumeTag}/main.pdf`}
+                href={`https://github.com/elaheh-dastan/elaheh-dastan.pdf/releases/download/${resumeTag}/main.pdf`}
                 className="but opc-2"
               >
                 <i className="fas fa-paperclip"></i> Here is my CV (updated at{" "}
@@ -67,7 +67,7 @@ export default function Home({ resumeTag }: HomeProps) {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const res = await fetch(
-    "https://api.github.com/repos/elahe-dastan/elahe-dastan.pdf/releases/latest"
+    "https://api.github.com/repos/elaheh-dastan/elaheh-dastan.pdf/releases/latest"
   );
   const latest = await res.json();
 

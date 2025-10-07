@@ -1,4 +1,4 @@
-import Divier from "../components/divider";
+import Divider from "../components/divider";
 import Title from "../components/title";
 import React from "react";
 
@@ -14,20 +14,20 @@ function Contact() {
                 <b style={{ fontWeight: "bold" }}>
                   <i className="fab fa-google"></i> Email
                 </b>
-                :&nbsp; elahe.dstn <b style={{ fontWeight: "bold" }}>at</b>{" "}
+                :&nbsp; elaheh.dstn <b style={{ fontWeight: "bold" }}>at</b>{" "}
                 gmail <b style={{ fontWeight: "bold" }}>dot</b> com
                 <br />
                 <b style={{ fontWeight: "bold" }}>
                   <i className="fas fa-university"></i> Email
                 </b>
-                :&nbsp; dastan.elahe <b style={{ fontWeight: "bold" }}>at</b>{" "}
+                :&nbsp; dastan.elaheh <b style={{ fontWeight: "bold" }}>at</b>{" "}
                 aut <b style={{ fontWeight: "bold" }}>dot</b> ac{" "}
                 <b style={{ fontWeight: "bold" }}>dot</b> ir
                 <br />
                 <b style={{ fontWeight: "bold" }}>
                   <i className="fab fa-skype"></i> Skype
                 </b>
-                :&nbsp; elahe.dstn
+                :&nbsp; elaheh.dstn
                 <br />
                 <b style={{ fontWeight: "bold" }}>
                   <i className="fas fa-phone"></i> Phone
@@ -36,11 +36,11 @@ function Contact() {
                 <a href="tel://+989352257378" style={{ color: "#777" }}>
                   (+98) 935 225 73 78
                 </a>
-                <Divier />
+                <Divider />
               </div>
               <div className="col-md-4">
                 <a
-                  href="https://github.com/elahe-dastan.key"
+                  href="https://github.com/elaheh-dastan.key"
                   target="_blank"
                   role="button"
                   rel="noreferrer"

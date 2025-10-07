@@ -1,6 +1,6 @@
 import React from "react";
 
-function Divier() {
+function Divider() {
   return (
     <div className="divider">
       <div data-svg-drawing="yes" className="zigzag large clearfix ">
@@ -25,4 +25,4 @@ function Divier() {
   );
 }
 
-export default Divier;
+export default Divider;

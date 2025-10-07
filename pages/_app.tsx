@@ -13,7 +13,7 @@ function MainApp({ Component, pageProps, router }: AppProps) {
   return (
     <div id="wrapper" className="margLTop margLBottom">
       <Head>
-        <title>Elahe Dastan</title>
+        <title>Elaheh Dastan</title>
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌰</text></svg>"
@@ -29,10 +29,10 @@ function MainApp({ Component, pageProps, router }: AppProps) {
                     src="/me-1.jpg"
                     width={1024}
                     height={1024}
-                    alt="Elahe Dastan"
+                    alt="Elaheh Dastan"
                   />
                   <figcaption className="name-profile">
-                    <span>ELAHE DASTAN</span>
+                    <span>ELAHEH DASTAN</span>
                   </figcaption>
                 </figure>
                 <nav id="main-nav" className="main-nav clearfix tabbed">
@@ -88,7 +88,7 @@ function MainApp({ Component, pageProps, router }: AppProps) {
                 <ul className="social">
                   <li className="anim">
                     <a
-                      href="https://github.com/elahe-dastan"
+                      href="https://github.com/elaheh-dastan"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -97,7 +97,7 @@ function MainApp({ Component, pageProps, router }: AppProps) {
                   </li>
                   <li className="anim">
                     <a
-                      href="https://instagram.com/elahe.dstn"
+                      href="https://instagram.com/elaheh.dstn"
                       target="_blank"
                       rel="noreferrer"
                     >
