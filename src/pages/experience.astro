@@ -1,34 +1,201 @@
 ---
-import { Image } from "astro:assets";
-import snapp from "../assets/snapp.png";
 import Title from "../components/Title.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout
-	title="Work Experience - Elaheh Dastan | Data Scientist & Backend Engineer"
-	description="Professional experience of Elaheh Dastan: Backend Engineer and Data Scientist at Snapp!, Iran's largest ride-hailing platform."
+	title="Work Experience - Elaheh Dastan | Senior Machine Learning Engineer"
+	description="Professional experience of Elaheh Dastan: Senior Data Scientist at Digikala, ML Consultant at Asan Pardakht, Senior ML Engineer at Snapp!, and ML roles at Nahal and Avidnet Technology."
 >
 	<section id="work-exp" class="bgWhite ofsInBottom">
 		<div class="experience">
 			<Title title="Work Experience" />
 
 			<div class="content d-grid gap-5">
+				{/* Digikala */}
 				<div class="text-body">
-					<div class="row align-items-center">
-						<div class="col-md-4">
-							<Image src={snapp} alt="Snapp!" class="img-fluid" />
-						</div>
-						<div class="col-md-8">
-							<h4>Snapp! &mdash; Iran&apos;s largest ride-hailing platform</h4>
-							<h6 class="text-muted">
-								Backend Engineer / Data Scientist | Tehran, Iran | Since 2020
-							</h6>
-							<ul class="bullet">
-								<li>Users Chapter</li>
-								<li>Map Chapter</li>
-							</ul>
-						</div>
-					</div>
+					<h4>Digikala &mdash; Iran&apos;s largest e-commerce marketplace</h4>
+					<h6 class="text-muted">
+						Senior Data Scientist | Tehran, Iran | Jul 2024 - Apr 2026
+					</h6>
+					<ul>
+						<li>
+							Built an image-to-product retrieval system with a dual-encoder model
+							combining CLIP-based visual embeddings and textual product
+							representations, reaching 92% top-10 accuracy and enabling visual
+							search from uploaded or shared images.
+						</li>
+						<li>
+							Trained a Query Understanding model on user query logs and click data
+							to infer intent and reformulate low-confidence queries, reducing
+							zero-click searches by 4%.
+						</li>
+						<li>
+							Improved search relevance through multi-metric fine-tuning and
+							category-consistent retrieval, lifting conversion rate by 4%; ran A/B
+							experiments routing each query between semantic and Elasticsearch
+							pipelines, increasing add-to-cart by 3%.
+						</li>
+						<li>
+							Extended image search to video input with an FFmpeg transcoding,
+							keyframe extraction and scene detection pipeline, improving retrieval
+							relevance by 15%.
+						</li>
+						<li>
+							Built an agentic LLM quality-control and ticket-resolution system with
+							Pydantic AI and LangChain, using an LLM-as-judge harness and Langfuse
+							tracing to score and autonomously answer support tickets.
+						</li>
+						<li>
+							Established LLMOps practices &mdash; prompt evaluation harnesses,
+							Langfuse observability, and token-cost dashboards in Grafana &mdash;
+							cutting LLM inference costs by 25%.
+						</li>
+					</ul>
+				</div>
+
+				{/* Asan Pardakht */}
+				<div class="text-body">
+					<h4>Asan Pardakht</h4>
+					<h6 class="text-muted">
+						Machine Learning Consultant | Tehran, Iran | Feb 2024 - Jul 2024
+					</h6>
+					<ul>
+						<li>
+							Built LSTM and Prophet price-forecasting models achieving 12-18% MAPE
+							across major coins such as BTC and ETH.
+						</li>
+						<li>
+							Developed a recommendation system with LightGBM and behavioral KMeans
+							user clustering, increasing simulated ROI by 9.3%.
+						</li>
+						<li>
+							Designed portfolio optimization combining Modern Portfolio Theory and
+							Deep Q-Learning to maximize Sharpe ratio across 20+ cryptocurrencies.
+						</li>
+						<li>
+							Integrated Monte Carlo simulations for profit expectation; the
+							prototype outperformed an equal-weighted baseline by 15% in
+							backtesting.
+						</li>
+					</ul>
+				</div>
+
+				{/* Snapp! */}
+				<div class="text-body">
+					<h4>Snapp! &mdash; Iran&apos;s largest ride-hailing platform</h4>
+					<h6 class="text-muted">
+						Senior ML Engineer | Tehran, Iran | 2021 - 2024
+					</h6>
+					<ul>
+						<li>
+							Co-built an end-to-end MLOps pipeline to train, version, and deploy
+							models using Airflow, Spark, MLflow, Katib, Feast, TensorFlow Serving,
+							FastAPI, Kafka Streams and GitLab CI/CD, reducing training and
+							deployment time by 70%.
+						</li>
+						<li>
+							Built a recommendation system to infer speed for streets lacking
+							sufficient data, expanding coverage from 1M to 3M shared streets.
+						</li>
+						<li>
+							Launched an ETA system across 5+ cities in Iran and Iraq, improving R²
+							by 20%, and reduced ETA MAPE by 5% with street-speed forecasting
+							models.
+						</li>
+						<li>
+							Implemented an HMM map-matching algorithm to align driver GPS probes
+							to streets and compute per-driver speed.
+						</li>
+						<li>
+							Developed a Golang microservice to benchmark model accuracy in real
+							time with Prometheus and Grafana, speeding up QA by 80%.
+						</li>
+					</ul>
+
+					<h6 class="text-muted">
+						Software Engineer, AI/ML | Tehran, Iran | 2020 - 2021
+					</h6>
+					<ul>
+						<li>
+							Integrated vector database solutions for efficient similarity search
+							to surface related items in Snapp Shop, increasing conversion rate by
+							5%.
+						</li>
+						<li>
+							Fine-tuned and deployed a pre-trained OCR model (EasyOCR) to read ID
+							cards in the driver-signup flow, cutting signup time from days to
+							hours.
+						</li>
+						<li>
+							Optimized a transformer model with ONNX to boost inference speed by
+							10% and decouple training from serving.
+						</li>
+						<li>
+							Engineered a sentiment analysis service using SVM to analyze over
+							10,000 tweets daily for real-time insight into public sentiment.
+						</li>
+						<li>
+							Mentored over 5 new joiners and launched a structured mentorship
+							program and a new interview pipeline.
+						</li>
+					</ul>
+				</div>
+
+				{/* Nahal */}
+				<div class="text-body">
+					<h4>Nahal</h4>
+					<h6 class="text-muted">ML Engineer | Tehran, Iran | 2018 - 2020</h6>
+					<ul>
+						<li>
+							Fine-tuned and deployed LLM models on GPU to translate text between
+							the support team and foreign customers.
+						</li>
+						<li>
+							Developed a CRF-based NER model powering an address search engine,
+							increasing successful searches by 15%.
+						</li>
+						<li>
+							Built and deployed a stacked LSTM model to forecast stock and
+							cryptocurrency values, achieving 87% prediction accuracy.
+						</li>
+						<li>
+							Designed a type-ahead search system for stock lookup using prefix
+							matching over a custom trie, reducing stock search time by 30%.
+						</li>
+						<li>
+							Developed a BERT-based chatbot to answer stock inquiries, driving a
+							20% increase in user engagement.
+						</li>
+					</ul>
+				</div>
+
+				{/* Avidnet Technology */}
+				<div class="text-body">
+					<h4>Avidnet Technology</h4>
+					<h6 class="text-muted">
+						Software Engineer, AI/ML | Tehran, Iran | 2017 - 2018
+					</h6>
+					<ul>
+						<li>
+							Deployed neural-network time-series forecasting on Raspberry Pi 4 and
+							decision-tree classification on ARM Cortex-M52.
+						</li>
+						<li>
+							Led the design and implementation of an event detection service to
+							alert on a patient's abnormal behavior, achieving a 0.95 F1 score.
+						</li>
+						<li>
+							Employed TensorFlow Lite to reduce memory usage by 50%, enabling
+							on-device inference on mobile phones.
+						</li>
+						<li>
+							Launched a Kafka pipeline to ingest sensor data via Protobuf into a
+							data lake, capable of handling 20k+ messages per second.
+						</li>
+						<li>
+							Implemented Kalman filtering to enhance GPS positioning by 10%.
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
