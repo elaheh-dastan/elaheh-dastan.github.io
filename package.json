@@ -1,36 +1,27 @@
 {
-  "name": "elahe-dastan",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build",
-    "lint": "next lint",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.1.0",
-    "bootstrap": "^5.3.8",
-    "highlight.js": "^11.11.1",
-    "next": "^15.5.4",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "^24.7.0",
-    "@types/react": "^19.2.2",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
-    "@typescript-eslint/parser": "^8.46.0",
-    "eslint-config-next": "15.5.4",
-    "gray-matter": "^4.0.3",
-    "rehype-format": "^5.0.1",
-    "rehype-highlight": "^7.0.2",
-    "rehype-stringify": "^10.0.1",
-    "remark-gfm": "^4.0.1",
-    "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.2",
-    "typescript": "^5.9.3",
-    "unified": "^11.0.5",
-    "uuid": "^13.0.0"
-  }
+	"name": "elaheh-dastan-me",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"packageManager": "pnpm@11.11.0",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"check": "astro check",
+		"lint": "biome check .",
+		"format": "biome check --write ."
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^3.7.3",
+		"@fortawesome/fontawesome-free": "^7.3.1",
+		"astro": "^7.2.2",
+		"bootstrap": "^5.3.8",
+		"sharp": "^0.35.3"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.10",
+		"@biomejs/biome": "^2.5.8",
+		"typescript": "^6.0.3"
+	}
 }
