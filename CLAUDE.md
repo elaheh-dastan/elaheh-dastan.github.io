@@ -36,13 +36,16 @@ Prettier.
 links to
 
 ```
-https://github.com/elaheh-dastan/elaheh-dastan.pdf/releases/download/<tag>/main.pdf
+https://github.com/elaheh-dastan/elaheh-dastan.pdf/releases/download/<tag>/elaheh.pdf
 ```
 
-That asset name is **literal**. As of the last check the newest release
-(`2024-04-25`) carries **no assets at all**, so this button currently 404s. Fix
-belongs in the resume repo's `typst.yaml` workflow (it must attach the built PDF
-as `main.pdf`), not here.
+That asset name is **literal**. The resume repo builds region-specific variants
+(`elaheh-spain.pdf`, `elaheh-iran.pdf`) and additionally publishes the default
+variant as `elaheh.pdf` purely so this link keeps resolving. If that asset stops
+being published, this button silently 404s.
+
+Note the link only resolves for releases tagged **after** the resume repo's CI
+was fixed; older releases (through `2024-04-25`) carry no assets at all.
 
 ## Cross-repo alignment (important)
 
