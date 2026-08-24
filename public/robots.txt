@@ -1,0 +1,6 @@
+# robots.txt for https://elaheh-dastan.github.io
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://elaheh-dastan.github.io/sitemap-index.xml
