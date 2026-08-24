@@ -26,7 +26,6 @@ Prettier.
   Projects section (`src/sections/projects.typ`).
 - `src/pages/education.astro` — degrees, plus the Publications & Research
   section.
-- `src/pages/lecture.astro` — course links.
 - `src/pages/contact.astro` — full contact details (the layout sidebar carries a
   short version on every page).
 - `src/layouts/Layout.astro`, `src/components/` — shared shell and UI.
