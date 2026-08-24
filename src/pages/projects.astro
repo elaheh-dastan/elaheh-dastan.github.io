@@ -1,0 +1,63 @@
+---
+import Title from "../components/Title.astro";
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+	{
+		title: "QueryCraft",
+		tagline: "Agentic Text-to-SQL",
+		repo: "elaheh-dastan/QueryCraft",
+		description:
+			"A LangGraph + LangChain agent that converts natural-language questions into SQL, executes them, and returns results. Served as a Django web app with a self-hosted sqlcoder-7b LLM via Ollama and PostgreSQL, containerized with Docker Compose.",
+	},
+	{
+		title: "Flight Booking Agent",
+		tagline: "Conversational Tool-Using Agent",
+		repo: "elaheh-dastan/book-flight-llm",
+		description:
+			"A conversational GPT-4.1 agent that books flights end-to-end via function/tool calling — collecting passenger details, searching flights, and confirming bookings against a live API.",
+	},
+	{
+		title: "Multi-Agent App (OpenAI Agents SDK)",
+		tagline: "Agents, Handoffs & Guardrails",
+		repo: "elaheh-dastan/openai-agent",
+		description:
+			"An agentic application built with the OpenAI Agents SDK using agent handoffs, input/output guardrails, sessions, and built-in tracing, routed across multiple model providers (OpenAI, Anthropic, Google, Llama) through OpenRouter.",
+	},
+	{
+		title: "Seller Description Validator",
+		tagline: "LLM-as-Judge + Vector Search",
+		repo: "elaheh-dastan/SellerDescriptionValidator",
+		description:
+			"A FastAPI service that uses an LLM (Gemini 2.0 Flash via OpenRouter) to evaluate seller product statements and return a calibrated confidence level, with all-MiniLM-L6-v2 embeddings stored in a Qdrant vector database.",
+	},
+];
+---
+<Layout
+	title="Projects - Elaheh Dastan | LLM & Machine Learning Projects"
+	description="Open-source projects by Elaheh Dastan: agentic text-to-SQL, LLM tool-using agents, multi-agent applications, and LLM-as-judge services."
+>
+	<section id="projects" class="bgWhite ofsInBottom">
+		<div class="experience">
+			<Title title="Projects" />
+
+			<div class="content d-grid gap-5">
+				{
+					projects.map((project) => (
+						<div class="text-body">
+							<h4>{project.title}</h4>
+							<h6 class="text-muted">{project.tagline}</h6>
+							<p>{project.description}</p>
+							<p>
+								<i class="fab fa-github" />{" "}
+								<a href={`https://github.com/${project.repo}`} target="_blank" rel="noopener">
+									{project.repo}
+								</a>
+							</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>
