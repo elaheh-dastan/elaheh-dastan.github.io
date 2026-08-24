@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import dataScientist from "../assets/elaheh-dastan-data-scientist.jpg";
+import Title from "../components/Title.astro";
+import Layout from "../layouts/Layout.astro";
+
+let resumeTag = "latest";
+try {
+	const res = await fetch(
+		"https://api.github.com/repos/elaheh-dastan/elaheh-dastan.pdf/releases/latest",
+	);
+	if (!res.ok) {
+		throw new Error(`GitHub API returned ${res.status}`);
+	}
+	const latest = await res.json();
+	resumeTag = latest.tag_name || "latest";
+} catch (error) {
+	console.error("Failed to fetch resume tag:", error);
+}
+---
+<Layout>
+	<section id="about" class="bgWhite ofsInBottom">
+		<div class="about">
+			<Title title="Who am I?" />
+			<div class="content">
+				<div class="block-content margBSmall">
+					<div class="profile margBSmall">
+						<h1>Elaheh Dastan</h1>
+						<h3>Data Scientist, Backend Engineer</h3>
+						<h6 class="text-muted">Tehran, Iran</h6>
+					</div>
+					<div class="row">
+						<div class="col-md-8 text-body">
+							<p>
+								I am a computer engineer and a passionate software engineer at
+								Snapp!, Iran's largest ride-hailing platform. I love solving
+								challenges, designing and writing programs.
+							</p>
+							<br />
+							<p>
+								I tend to be a data scientist. I have taken related courses at
+								university and done self-learning projects, and I can firmly say
+								this is what I want to do in the future.
+							</p>
+							<br />
+							<Image
+								src={dataScientist}
+								alt="Elaheh Dastan"
+								class="img-fluid rounded"
+							/>
+						</div>
+						<div class="col-md-4">
+							<b class="fw-bold fs-5">Interests:</b>
+							<ul class="bullet">
+								<li>Data Science</li>
+								<li>Machine Learning</li>
+								<li>Distributed Systems</li>
+								<li>Backend Development</li>
+							</ul>
+							<hr />
+							<b class="fw-bold fs-5">Key Skills:</b>
+							<ul class="bullet">
+								<li>Python, Go</li>
+								<li>Data Analysis</li>
+								<li>Microservices</li>
+								<li>SQL, NoSQL</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 mx-auto">
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={`https://github.com/elaheh-dastan/elaheh-dastan.pdf/releases/download/${resumeTag}/main.pdf`}
+						class="but opc-2"
+					>
+						<i class="fas fa-paperclip" /> Here is my CV (updated at {resumeTag})
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

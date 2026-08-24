@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import snapp from "../assets/snapp.png";
+import Title from "../components/Title.astro";
+import Layout from "../layouts/Layout.astro";
+---
+<Layout
+	title="Work Experience - Elaheh Dastan | Data Scientist & Backend Engineer"
+	description="Professional experience of Elaheh Dastan: Backend Engineer and Data Scientist at Snapp!, Iran's largest ride-hailing platform."
+>
+	<section id="work-exp" class="bgWhite ofsInBottom">
+		<div class="experience">
+			<Title title="Work Experience" />
+
+			<div class="content d-grid gap-5">
+				<div class="text-body">
+					<div class="row align-items-center">
+						<div class="col-md-4">
+							<Image src={snapp} alt="Snapp!" class="img-fluid" />
+						</div>
+						<div class="col-md-8">
+							<h4>Snapp! &mdash; Iran&apos;s largest ride-hailing platform</h4>
+							<h6 class="text-muted">
+								Backend Engineer / Data Scientist | Tehran, Iran | Since 2020
+							</h6>
+							<ul class="bullet">
+								<li>Users Chapter</li>
+								<li>Map Chapter</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
