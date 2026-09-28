@@ -4,13 +4,53 @@ import Layout from "../layouts/Layout.astro";
 ---
 <Layout
 	title="Work Experience - Elaheh Dastan | Senior Machine Learning Engineer"
-	description="Professional experience of Elaheh Dastan: Senior Data Scientist at Digikala, ML Consultant at Asan Pardakht, Senior ML Engineer at Snapp!, and ML roles at Nahal and Avidnet Technology."
+	description="Professional experience of Elaheh Dastan: Machine Learning Engineer at Caterpillar (via Comtek Technology), Senior Data Scientist at Digikala, ML Consultant at Asan Pardakht, Senior ML Engineer at Snapp!, and ML roles at Nahal and Avidnet Technology."
 >
 	<section id="work-exp" class="bgWhite ofsInBottom">
 		<div class="experience">
 			<Title title="Work Experience" />
 
 			<div class="content d-grid gap-5">
+				{/* Caterpillar */}
+				<div class="text-body">
+					<h4>Caterpillar &mdash; via Comtek Technology</h4>
+					<h6 class="text-muted">
+						Machine Learning Engineer | Barcelona, Spain | May 2026 - Present
+					</h6>
+					<ul>
+						<li>
+							Build and own Pampas, the LLM evaluation framework for the Cat In-Cab
+							Assistant, covering the judging methodology, the test corpus, and the
+							release pipeline that gates every change to the assistant.
+						</li>
+						<li>
+							Designed the judging methodology &mdash; binary Accept/Reject rubrics, a
+							generic RAG metric evaluator, a deterministic tool-calling evaluator, and
+							a parts-search judge for SIS2 driven from declarative scenario.yaml files.
+						</li>
+						<li>
+							Built judge-the-judge meta-evaluation reporting variance and cross-judge
+							agreement, so a rubric or prompt change is measured before it is trusted.
+						</li>
+						<li>
+							Moved test data and configuration to code: dataset items migrated from
+							JSON to YAML behind a conversion CLI, with Pydantic validation and
+							scenario-schema to prompt-template wiring.
+						</li>
+						<li>
+							Engineered the evaluation CI/CD: burn-in workflows, Bayesian two-branch
+							comparison, chunked parallel matrices with result merging and PR-comment
+							reporting, AWS Lambda deploy and version resolution, and JFrog Artifactory
+							publishing.
+						</li>
+						<li>
+							Extracted the framework into a shared p-evaluation-framework library with
+							typed AgentScenario / TypedDict contracts, plus LangGraph todo middleware,
+							reasoning-level Langfuse tagging, and per-run timing reports.
+						</li>
+					</ul>
+				</div>
+
 				{/* Digikala */}
 				<div class="text-body">
 					<h4>Digikala &mdash; Iran&apos;s largest e-commerce marketplace</h4>
