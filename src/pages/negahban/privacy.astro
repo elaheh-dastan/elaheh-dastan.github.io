@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/negahban.png";
+import Divider from "../../components/Divider.astro";
+import Title from "../../components/Title.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const updated = "2026-10-01";
+---
+<Layout
+	title="negahban - Privacy Policy"
+	description="Privacy policy, terms of use, and data deletion instructions for negahban, a personal Instagram comment moderation tool."
+>
+	<section id="negahban-privacy" class="bgWhite ofsInBottom">
+		<div class="contact">
+			<Title title="negahban — Privacy Policy" />
+			<div class="content">
+				<div class="block-content margBSmall">
+					<div class="row">
+						<div class="col-md-12 text-body">
+							<p class="text-center">
+								<Image
+									src={logo}
+									alt="negahban — a panda on sentry duty"
+									width={192}
+									height={192}
+									style="border-radius: 24px;"
+								/>
+							</p>
+							<p class="text-muted">Last updated: {updated}</p>
+
+							<p>
+								<b>negahban</b> (Persian for <i>watchman</i>) is a personal,
+								self-hosted command-line tool that helps the owner of an Instagram
+								professional account moderate the comments on their own posts. It
+								is operated by Elaheh Dastan for her own account only. It is not a
+								hosted service, has no users other than its operator, and is not
+								offered to third parties.
+							</p>
+
+							<h3>What data it accesses</h3>
+							<p>
+								Through Meta's official Instagram API, with the account owner's
+								explicit authorization, negahban reads:
+							</p>
+							<ul>
+								<li>the owner's own posts (id, caption, permalink, timestamp, comment count);</li>
+								<li>
+									comments and replies on those posts: comment id, text, timestamp,
+									the commenter's username, and whether the comment is hidden.
+								</li>
+							</ul>
+							<p>
+								It does not access direct messages, follower lists, profile
+								information of commenters beyond their username, or any data from
+								accounts other than the owner's.
+							</p>
+
+							<h3>How the data is used</h3>
+							<ul>
+								<li>
+									Comment text (together with the post caption, for context) is
+									sent to Anthropic's Claude API to be classified as acceptable,
+									civil criticism, abuse, spam, or a scam. Anthropic processes this
+									data under its
+									<a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">commercial terms</a>
+									and does not train on it.
+								</li>
+								<li>
+									Based on that classification and the owner's settings, negahban
+									may hide, unhide, or delete a comment on the owner's own post, or
+									simply flag it for the owner to look at. Civil criticism is never
+									hidden.
+								</li>
+							</ul>
+
+							<h3>Where the data is stored</h3>
+							<p>
+								Everything stays on the operator's own computer. negahban keeps a
+								local audit log (an SQLite file) with each judged comment's id,
+								text, username, the classification, and the action taken, so that
+								decisions can be reviewed and reversed. Access tokens are kept in
+								the operator's local password manager. No data is uploaded to any
+								server other than Meta's API (to read and act on comments) and
+								Anthropic's API (to classify comment text). Nothing is shared with
+								or sold to anyone.
+							</p>
+
+							<h3>Retention</h3>
+							<p>
+								The local audit log is kept as long as the operator finds it
+								useful and can be deleted at any time. Classification requests to
+								Anthropic are not retained by negahban.
+							</p>
+
+							<h3 id="deletion">Data deletion</h3>
+							<p>
+								If you commented on one of the operator's posts and want the record
+								of your comment removed from negahban's local log, email
+								<b>elahe.dstn at gmail dot com</b> with your Instagram username; the
+								corresponding rows will be deleted within 30 days. Deleting your
+								comment on Instagram itself is done through Instagram, not through
+								negahban. The operator can revoke negahban's access to the account
+								at any time in Instagram under
+								<i>Settings → Website permissions → Apps and websites</i>, which
+								invalidates its tokens.
+							</p>
+
+							<h3 id="terms">Terms of use</h3>
+							<p>
+								negahban is open source and provided as is, without warranty. It
+								is intended to be run by the owner of an Instagram professional
+								account on that account only, in compliance with Meta's Platform
+								Terms and Developer Policies.
+							</p>
+
+							<h3>Contact</h3>
+							<p>
+								Questions about this policy: <b>elahe.dstn at gmail dot com</b>.
+							</p>
+							<Divider />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
