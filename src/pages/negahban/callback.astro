@@ -1,0 +1,91 @@
+---
+import Divider from "../../components/Divider.astro";
+import Title from "../../components/Title.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout
+	title="negahban - Login callback"
+	description="Instagram login callback for negahban: shows the authorization code to paste into the command-line tool."
+>
+	<section id="negahban-callback" class="bgWhite ofsInBottom">
+		<div class="contact">
+			<Title title="negahban — connect your account" />
+			<div class="content">
+				<div class="block-content margBSmall">
+					<div class="row">
+						<div class="col-md-12 text-body">
+							<div id="ok" hidden>
+								<p>
+									Instagram handed back an authorization code. negahban runs on your
+									own computer and has no server, so this page simply shows the code
+									for you to paste into the terminal where <code>negahban login</code>
+									is waiting.
+								</p>
+								<p>
+									<input
+										id="code"
+										type="text"
+										readonly
+										class="form-control font-monospace"
+										aria-label="Authorization code"
+									/>
+								</p>
+								<p>
+									<button id="copy" type="button" class="btn btn-outline-dark">
+										Copy code
+									</button>
+									<span id="copied" class="text-muted" hidden>&nbsp;copied</span>
+								</p>
+								<p class="text-muted">
+									The code is single-use and expires within minutes. It never leaves
+									this page except through your clipboard.
+								</p>
+							</div>
+							<div id="err" hidden>
+								<p>
+									Instagram did not return a code. <span id="reason"></span>
+									Run <code>negahban login</code> again to retry.
+								</p>
+							</div>
+							<div id="none">
+								<p>
+									This is the login callback page for
+									<a href="/negahban/">negahban</a>. Start the flow with
+									<code>negahban login</code>; it opens Instagram, which then sends
+									you back here with a code.
+								</p>
+							</div>
+							<Divider />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		const code = params.get("code");
+		const error = params.get("error_description") ?? params.get("error");
+		const show = (id: string) => {
+			const node = document.getElementById(id);
+			if (node) node.hidden = false;
+		};
+		document.getElementById("none")!.hidden = true;
+		if (code) {
+			const input = document.getElementById("code") as HTMLInputElement;
+			input.value = code.replace(/#_$/, "");
+			show("ok");
+			document.getElementById("copy")?.addEventListener("click", async () => {
+				await navigator.clipboard.writeText(input.value);
+				show("copied");
+			});
+			// Do not leave the code sitting in the address bar or the history.
+			history.replaceState(null, "", window.location.pathname);
+		} else if (error) {
+			document.getElementById("reason")!.textContent = error;
+			show("err");
+		} else {
+			show("none");
+		}
+	</script>
+</Layout>
