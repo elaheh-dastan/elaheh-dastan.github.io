@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/negahban.png";
+import Divider from "../../components/Divider.astro";
+import Title from "../../components/Title.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout
+	title="negahban - Instagram comment watchman"
+	description="negahban is a self-hosted command-line tool that moderates the comments on your own Instagram posts through Meta's official Instagram API."
+>
+	<section id="negahban" class="bgWhite ofsInBottom">
+		<div class="contact">
+			<Title title="negahban" />
+			<div class="content">
+				<div class="block-content margBSmall">
+					<div class="row">
+						<div class="col-md-12 text-body">
+							<p class="text-center">
+								<Image
+									src={logo}
+									alt="negahban — a panda on sentry duty"
+									width={256}
+									height={256}
+									style="border-radius: 32px;"
+								/>
+							</p>
+
+							<p>
+								<b>negahban</b> (<i>نگهبان</i>, Persian for <i>watchman</i>) is a
+								self-hosted command-line tool that keeps watch over the comments on
+								your own Instagram posts. It reads new comments through Meta's
+								official Instagram API, asks an AI model what each one is — fine,
+								civil criticism, abuse, spam, or a scam — and hides the abusive and
+								junk ones. Civil criticism is never hidden, every decision is
+								written to a local audit log, and every hide can be undone.
+							</p>
+
+							<h3>How it works</h3>
+							<ol>
+								<li>Connect your Instagram professional account (<code>negahban auth</code>).</li>
+								<li>
+									Run <code>negahban scan</code>: new comments on your recent posts are
+									fetched and classified. By default this is a dry run that only
+									reports.
+								</li>
+								<li>
+									Run <code>negahban scan --apply</code> to hide abusive and spam
+									comments. Low-confidence verdicts are only flagged for you.
+								</li>
+								<li>
+									<code>negahban log</code> shows what was decided;
+									<code>negahban unhide &lt;id&gt;</code> reverses a hide.
+								</li>
+							</ol>
+
+							<h3>Links</h3>
+							<ul>
+								<li>
+									<a href="https://github.com/parham-alvani/negahban" target="_blank" rel="noopener">
+										Source code on GitHub
+									</a>
+								</li>
+								<li><a href="/negahban/privacy">Privacy policy</a></li>
+								<li><a href="/negahban/privacy#deletion">Data deletion</a></li>
+								<li><a href="/negahban/privacy#terms">Terms of use</a></li>
+							</ul>
+
+							<h3>Contact</h3>
+							<p>Elaheh Dastan — <b>elahe.dstn at gmail dot com</b></p>
+							<Divider />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
