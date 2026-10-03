@@ -1,70 +1,100 @@
 ---
-import Divider from "../components/Divider.astro";
-import Title from "../components/Title.astro";
+import Icon, { type IconName } from "../components/Icon.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { profile } from "../data/profile";
 import Layout from "../layouts/Layout.astro";
+
+const channels: {
+	icon: IconName;
+	label: string;
+	value: string;
+	href: string;
+	external?: boolean;
+}[] = [
+	{
+		icon: "envelope",
+		label: "Email",
+		value: profile.email,
+		href: `mailto:${profile.email}`,
+	},
+	{
+		icon: "phone",
+		label: "Phone",
+		value: profile.phone,
+		href: profile.phoneHref,
+	},
+	{
+		icon: "linkedin",
+		label: "LinkedIn",
+		value: "linkedin.com/in/elaheh-dastan",
+		href: profile.linkedin,
+		external: true,
+	},
+	{
+		icon: "github",
+		label: "GitHub",
+		value: "github.com/elaheh-dastan",
+		href: profile.github,
+		external: true,
+	},
+	{
+		icon: "google-scholar",
+		label: "Google Scholar",
+		value: "Publications and citations",
+		href: profile.scholar,
+		external: true,
+	},
+	{
+		icon: "medium",
+		label: "Medium",
+		value: "elahe-dstn.medium.com",
+		href: profile.medium,
+		external: true,
+	},
+	{
+		icon: "instagram",
+		label: "Instagram",
+		value: "@elahe.dstn",
+		href: profile.instagram,
+		external: true,
+	},
+	{
+		icon: "key",
+		label: "Public keys",
+		value: "SSH keys on GitHub",
+		href: profile.githubKeys,
+		external: true,
+	},
+];
 ---
 <Layout
-	title="Contact - Elaheh Dastan"
-	description="Get in touch with Elaheh Dastan by email, LinkedIn, GitHub, Medium, or Google Scholar."
+	title="Contact – Elaheh Dastan"
+	description="Get in touch with Elaheh Dastan by email, phone, LinkedIn, GitHub, Medium, or Google Scholar."
 >
-	<section id="contact" class="bgWhite ofsInBottom">
-		<div class="contact">
-			<Title title="Contact Me" />
-			<div class="content">
-				<div class="block-content margBSmall">
-					<div class="row">
-						<div class="col-md-8 text-body">
-							<b class="fw-bold"><i class="fab fa-google" /> Email</b>:&nbsp;
-							elahe.dstn <b class="fw-bold">at</b> gmail <b class="fw-bold">dot</b> com
-							<br />
-							<b class="fw-bold"><i class="fas fa-phone" /> Phone</b>:&nbsp;
-							<a href="tel:+447810170938" class="text-muted">(+44) 7810 170938</a>
-							<br />
-							<b class="fw-bold"><i class="fab fa-linkedin" /> LinkedIn</b>:&nbsp;
-							<a
-								href="https://www.linkedin.com/in/elaheh-dastan/"
-								target="_blank"
-								rel="noopener"
-							>
-								elaheh-dastan
-							</a>
-							<br />
-							<b class="fw-bold"><i class="fab fa-github" /> GitHub</b>:&nbsp;
-							<a href="https://github.com/elaheh-dastan" target="_blank" rel="noopener">
-								elaheh-dastan
-							</a>
-							<br />
-							<b class="fw-bold"><i class="fab fa-medium" /> Medium</b>:&nbsp;
-							<a href="https://elahe-dstn.medium.com" target="_blank" rel="noopener">
-								elahe-dstn
-							</a>
-							<br />
-							<b class="fw-bold"
-								><i class="fas fa-graduation-cap" /> Google Scholar</b
-							>:&nbsp;
-							<a
-								href="https://scholar.google.com/citations?user=1BxI0JkAAAAJ"
-								target="_blank"
-								rel="noopener"
-							>
-								profile
-							</a>
-							<Divider />
-						</div>
-						<div class="col-md-4">
-							<a
-								href="https://github.com/elaheh-dastan.keys"
-								target="_blank"
-								role="button"
-								rel="noopener"
-								class="btn btn-outline-dark"
-							>
-								Public Keys
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<PageHeader
+		eyebrow="Contact"
+		title="Get in touch"
+		lede={`I am based in ${profile.location} and happy to talk about machine learning roles, LLM evaluation, or collaboration on open-source work. Email is the fastest way to reach me.`}
+	/>
+
+	<div class="contact-grid">
+		{
+			channels.map((c) => (
+				<a
+					class="contact-card"
+					href={c.href}
+					target={c.external ? "_blank" : undefined}
+					rel={c.external ? "me noopener" : undefined}
+				>
+					<span class="contact-icon">
+						<Icon name={c.icon} size={18} />
+					</span>
+					<span>
+						<strong>{c.label}</strong>
+						<span class="small">{c.value}</span>
+					</span>
+				</a>
+			))
+		}
+	</div>
 </Layout>

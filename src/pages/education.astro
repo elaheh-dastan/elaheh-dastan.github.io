@@ -1,106 +1,83 @@
 ---
-import Divider from "../components/Divider.astro";
-import Title from "../components/Title.astro";
+import Icon from "../components/Icon.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { degrees, publications, university } from "../data/education";
+import { profile } from "../data/profile";
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout
-	title="Education - Elaheh Dastan | M.Sc. in Artificial Intelligence"
-	description="Educational background of Elaheh Dastan: M.Sc. in Artificial Intelligence and B.Sc. in Computer Engineering from Amirkabir University of Technology, Tehran, Iran."
+	title="Education – Elaheh Dastan"
+	description={`Education of Elaheh Dastan: ${degrees.map((d) => d.title).join(" and ")} from ${university.name}, ${university.location}, plus publications.`}
 >
-	<section id="education" class="bgWhite ofsInBottom">
-		<div class="expertise">
-			<Title title="Education" />
-			<div class="content">
-				<div class="block-content">
-					<div class="timeline education">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="exp-holder margTop">
-									<div class="exp">
-										<div class="hgroup">
-											<h4>M.Sc. in Artificial Intelligence</h4>
-											<h6><i class="fas fa-calendar" />2022 - 2024</h6>
-											<h6>
-												<i class="fas fa-flask" />Research focus: Deep Learning, Time
-												Series Analysis, Intelligent Transportation Systems
-											</h6>
-											<h6>
-												<i class="fas fa-thumbtack" />
-												<b class="bold">
-													<a class="gpacolor" href="https://aut.ac.ir/">
-														Amirkabir University of Technology
-													</a>
-												</b>, Tehran, Iran
-											</h6>
-										</div>
-										<br />
-									</div>
-									<div class="exp">
-										<div class="hgroup">
-											<h4>B.Sc. in Computer Engineering</h4>
-											<h6><i class="fas fa-calendar" />2017 - 2022</h6>
-											<h6>
-												<i class="fas fa-book" />Relevant coursework: Machine Learning,
-												Data Structures, Algorithms, Database Systems, Statistics
-											</h6>
-											<h6>
-												<i class="fas fa-thumbtack" />
-												<b class="bold">
-													<a class="gpacolor" href="https://aut.ac.ir/">
-														Amirkabir University of Technology
-													</a>
-												</b>, Tehran, Iran
-											</h6>
-										</div>
-										<br />
-									</div>
-								</div>
+	<PageHeader
+		eyebrow="Education"
+		title="Degrees and research"
+		lede={`Both of my degrees are from ${university.name} in ${university.location}, where my graduate research focused on deep learning for intelligent transportation systems.`}
+	/>
+
+	<section class="section" aria-labelledby="degrees">
+		<h2 id="degrees" class="visually-hidden">Degrees</h2>
+		<div class="timeline">
+			{
+				degrees.map((degree) => (
+					<article class="entry">
+						<div class="entry-head">
+							<div>
+								<h2>{degree.title}</h2>
+								<p class="entry-descriptor">
+									<a href={university.url} target="_blank" rel="noopener">{university.name}</a>
+								</p>
+							</div>
+							<div class="entry-meta">
+								<span>
+									<Icon name="calendar" size={12} />
+									{degree.date}
+								</span>
+								<span>
+									<Icon name="location-dot" size={12} />
+									{university.location}
+								</span>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+						<ul class="bullets">
+							<li>
+								<strong>{degree.detailLabel}:</strong> {degree.detail}
+							</li>
+						</ul>
+					</article>
+				))
+			}
+		</div>
+	</section>
 
-			<Title title="Publications & Research" />
-			<div class="content">
-				<div class="block-content text-body">
-					<div class="exp-holder">
-						<div class="exp">
-							<div class="hgroup">
-								<h4>
-									<a href="https://arxiv.org/abs/2309.09830">
-										Deep ETA Prediction for Urban Transport Systems
-									</a>
-								</h4>
-								<h6 class="text-muted">
-									IEEE Intelligent Vehicles Symposium (IV), 2022 &mdash; Co-author
-								</h6>
-							</div>
-							<ul>
-								<li>
-									Deep learning-based ETA prediction for ride-hailing services,
-									combining spatial-temporal features with real-time traffic
-									patterns.
-								</li>
-								<li>
-									Achieved state-of-the-art performance on a large-scale urban
-									transportation dataset.
-								</li>
-							</ul>
+	<section class="section" aria-labelledby="publications">
+		<div class="section-header">
+			<div>
+				<p class="eyebrow">Research</p>
+				<h2 id="publications">Publications</h2>
+			</div>
+			<a class="section-link" href={profile.scholar} target="_blank" rel="noopener">
+				Google Scholar
+				<Icon name="arrow-up-right" size={12} />
+			</a>
+		</div>
+		<div class="grid">
+			{
+				publications.map((paper) => (
+					<article class="card">
+						<div class="card-head">
+							<h3>
+								<a href={paper.url} target="_blank" rel="noopener">{paper.title}</a>
+							</h3>
+							<span class="muted small">{paper.year}</span>
 						</div>
-					</div>
-					<p>
-						Publications are also listed on{" "}
-						<a href="https://scholar.google.com/citations?user=1BxI0JkAAAAJ">
-							Google Scholar
-						</a>.
-					</p>
-				</div>
-			</div>
-
-			<div class="button margTop ofsInTop tCenter">
-				<Divider />
-			</div>
+						<p class="muted small">
+							{paper.role} · {paper.venue} · {paper.id}
+						</p>
+						<p>{paper.summary}</p>
+					</article>
+				))
+			}
 		</div>
 	</section>
 </Layout>

@@ -1,0 +1,65 @@
+---
+import Github from "@fortawesome/fontawesome-free/svgs/brands/github.svg";
+import GoogleScholar from "@fortawesome/fontawesome-free/svgs/brands/google-scholar.svg";
+import Instagram from "@fortawesome/fontawesome-free/svgs/brands/instagram.svg";
+import Linkedin from "@fortawesome/fontawesome-free/svgs/brands/linkedin.svg";
+import Medium from "@fortawesome/fontawesome-free/svgs/brands/medium.svg";
+// Inline SVG icons taken from the Font Awesome Free package (CC BY 4.0). Using
+// the SVG files directly avoids shipping the icon webfonts and CSS.
+import ArrowUpRight from "@fortawesome/fontawesome-free/svgs/solid/arrow-up-right-from-square.svg";
+import Book from "@fortawesome/fontawesome-free/svgs/solid/book.svg";
+import Briefcase from "@fortawesome/fontawesome-free/svgs/solid/briefcase.svg";
+import Building from "@fortawesome/fontawesome-free/svgs/solid/building.svg";
+import Calendar from "@fortawesome/fontawesome-free/svgs/solid/calendar.svg";
+import DiagramProject from "@fortawesome/fontawesome-free/svgs/solid/diagram-project.svg";
+import Envelope from "@fortawesome/fontawesome-free/svgs/solid/envelope.svg";
+import FileArrowDown from "@fortawesome/fontawesome-free/svgs/solid/file-arrow-down.svg";
+import Flask from "@fortawesome/fontawesome-free/svgs/solid/flask.svg";
+import GraduationCap from "@fortawesome/fontawesome-free/svgs/solid/graduation-cap.svg";
+import Key from "@fortawesome/fontawesome-free/svgs/solid/key.svg";
+import LocationDot from "@fortawesome/fontawesome-free/svgs/solid/location-dot.svg";
+import Newspaper from "@fortawesome/fontawesome-free/svgs/solid/newspaper.svg";
+import Phone from "@fortawesome/fontawesome-free/svgs/solid/phone.svg";
+import User from "@fortawesome/fontawesome-free/svgs/solid/user.svg";
+
+const icons = {
+	"arrow-up-right": ArrowUpRight,
+	book: Book,
+	briefcase: Briefcase,
+	building: Building,
+	calendar: Calendar,
+	"diagram-project": DiagramProject,
+	envelope: Envelope,
+	"file-arrow-down": FileArrowDown,
+	flask: Flask,
+	github: Github,
+	"google-scholar": GoogleScholar,
+	"graduation-cap": GraduationCap,
+	instagram: Instagram,
+	key: Key,
+	linkedin: Linkedin,
+	"location-dot": LocationDot,
+	medium: Medium,
+	newspaper: Newspaper,
+	phone: Phone,
+	user: User,
+};
+
+export type IconName = keyof typeof icons;
+
+interface Props {
+	name: IconName;
+	size?: number;
+	class?: string;
+}
+
+const { name, size = 16, class: className } = Astro.props;
+const Svg = icons[name];
+---
+<Svg
+	width={size}
+	height={size}
+	class:list={["icon", className]}
+	aria-hidden="true"
+	focusable="false"
+/>

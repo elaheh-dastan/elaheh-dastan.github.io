@@ -1,13 +1,24 @@
 ---
 import { Image } from "astro:assets";
-import dataScientist from "../assets/elaheh-dastan-data-scientist.jpg";
-import Title from "../components/Title.astro";
+import portrait from "../assets/elaheh-dastan.jpg";
+import Chips from "../components/Chips.astro";
+import Icon from "../components/Icon.astro";
+import { experience } from "../data/experience";
+import {
+	interests,
+	languages,
+	profile,
+	skills,
+	summary,
+} from "../data/profile";
 import Layout from "../layouts/Layout.astro";
 
+// The resume repo publishes the default variant as `elaheh.pdf` on every
+// release purely so this link keeps resolving; see CLAUDE.md.
 let resumeTag = "latest";
 try {
 	const res = await fetch(
-		"https://api.github.com/repos/elaheh-dastan/elaheh-dastan.pdf/releases/latest",
+		`https://api.github.com/repos/${profile.resumeRepo}/releases/latest`,
 	);
 	if (!res.ok) {
 		throw new Error(`GitHub API returned ${res.status}`);
@@ -17,92 +28,159 @@ try {
 } catch (error) {
 	console.error("Failed to fetch resume tag:", error);
 }
+const resumeUrl = `https://github.com/${profile.resumeRepo}/releases/download/${resumeTag}/elaheh.pdf`;
+
+const current = experience[0];
+const currentRole = current.roles[0];
 ---
 <Layout>
-	<section id="about" class="bgWhite ofsInBottom">
-		<div class="about">
-			<Title title="Who am I?" />
-			<div class="content">
-				<div class="block-content margBSmall">
-					<div class="profile margBSmall">
-						<h1>Elaheh Dastan</h1>
-						<h3>Senior Machine Learning Engineer & Data Scientist</h3>
-						<h6 class="text-muted">Barcelona, Spain</h6>
-					</div>
-					<div class="row">
-						<div class="col-md-8 text-body">
-							<p>
-								Senior ML engineer with 9+ years of experience designing and
-								deploying scalable machine learning systems and data pipelines. I
-								build end-to-end solutions, from data collection and ETL to model
-								training and production deployment.
-							</p>
-							<br />
-							<p>
-								I have delivered data-driven products with measurable business
-								impact across e-commerce, fintech, and transportation — search and
-								retrieval systems at Digikala, forecasting and portfolio models at
-								Asan Pardakht, and ETA and traffic prediction at Snapp!. I am now
-								at Caterpillar through COMTEK International, building the LLM evaluation
-								framework behind
-								the Cat In-Cab Assistant.
-							</p>
-							<br />
-							<p>
-								I studied computer engineering at Amirkabir University of
-								Technology and went on to an M.Sc. in Artificial Intelligence
-								there, with published research in intelligent transportation
-								systems. Lately most of my work sits around LLMs, agentic systems,
-								and the LLMOps practices that keep them honest in production.
-							</p>
-							<br />
-							<p>
-								I believe open source is holy, and that the people who could charge
-								for their research or their code but publish it for free are the
-								ones who will go to heaven.
-							</p>
-							<br />
-							<Image
-								src={dataScientist}
-								alt="Elaheh Dastan"
-								class="img-fluid rounded"
-							/>
-						</div>
-						<div class="col-md-4">
-							<b class="fw-bold fs-5">Interests:</b>
-							<ul class="bullet">
-								<li>LLMs & Agentic AI</li>
-								<li>Retrieval & Recommendation</li>
-								<li>Time Series Forecasting</li>
-								<li>MLOps & LLMOps</li>
-								<li>Intelligent Transportation</li>
-							</ul>
-							<hr />
-							<b class="fw-bold fs-5">Key Skills:</b>
-							<ul class="bullet">
-								<li>Python, Go, PyTorch, TensorFlow</li>
-								<li>Pydantic AI, LangChain, LangGraph</li>
-								<li>RAG & Vector Databases</li>
-								<li>Airflow, Spark, MLflow, Kubeflow</li>
-								<li>Docker, Kubernetes, AWS, GCP</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-6 mx-auto">
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href={`https://github.com/elaheh-dastan/elaheh-dastan.pdf/releases/download/${resumeTag}/elaheh.pdf`}
-						class="but opc-2"
-					>
-						<i class="fas fa-paperclip" /> Here is my CV (updated at {resumeTag})
-					</a>
-				</div>
+	<section class="hero" aria-labelledby="intro">
+		<div class="hero-text">
+			<p class="eyebrow">{profile.headline}</p>
+			<h1 id="intro">{profile.name}</h1>
+			<p class="lede">{profile.tagline}</p>
+			<p class="hero-location">
+				<Icon name="location-dot" size={14} />
+				{profile.location} · Open to remote work
+			</p>
+			<div class="hero-actions">
+				<a class="btn btn-primary" href={resumeUrl} target="_blank" rel="noreferrer">
+					<Icon name="file-arrow-down" size={15} />
+					Download CV
+					{resumeTag !== "latest" && <small>({resumeTag})</small>}
+				</a>
+				<a class="btn" href={profile.linkedin} target="_blank" rel="noopener">
+					<Icon name="linkedin" size={15} />
+					LinkedIn
+				</a>
+				<a class="btn" href={profile.github} target="_blank" rel="noopener">
+					<Icon name="github" size={15} />
+					GitHub
+				</a>
+				<a class="btn" href={`mailto:${profile.email}`}>
+					<Icon name="envelope" size={15} />
+					Email
+				</a>
 			</div>
 		</div>
+		<figure class="hero-figure">
+			<Image
+				src={portrait}
+				alt="Elaheh Dastan standing in front of the Louvre pyramid in Paris"
+				widths={[360, 560, 848]}
+				sizes="(min-width: 56rem) 22rem, 18rem"
+				class="hero-photo"
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</figure>
+	</section>
+
+	<section class="section" aria-label="At a glance">
+		<ul class="facts">
+			<li class="fact">
+				<strong>{profile.years} years</strong>
+				<span>building and shipping ML systems</span>
+			</li>
+			<li class="fact">
+				<strong>{current.name}</strong>
+				<span>{currentRole.title}, {current.descriptor}</span>
+			</li>
+			<li class="fact">
+				<strong>M.Sc. in AI</strong>
+				<span>Amirkabir University of Technology</span>
+			</li>
+			<li class="fact">
+				<strong>LLM evaluation</strong>
+				<span>RAG, agents, and LLM-as-judge in production</span>
+			</li>
+		</ul>
+	</section>
+
+	<section class="section about-grid" aria-labelledby="about">
+		<div>
+			<div class="section-header">
+				<div>
+					<p class="eyebrow">About</p>
+					<h2 id="about">Who I am</h2>
+				</div>
+			</div>
+			<div class="prose">
+				{summary.map((paragraph) => <p>{paragraph}</p>)}
+				<p>
+					I believe open source is holy. The people who could charge for their
+					research or their code but publish it for free are the ones who move
+					the whole field forward.
+				</p>
+			</div>
+		</div>
+		<aside>
+			<div class="aside-block">
+				<h3>Interests</h3>
+				<Chips items={interests} label="Interests" />
+			</div>
+			<div class="aside-block">
+				<h3>Languages</h3>
+				<Chips items={languages.map((l) => `${l.name} · ${l.level}`)} outline label="Languages" />
+			</div>
+		</aside>
+	</section>
+
+	<section class="section" aria-labelledby="skills">
+		<div class="section-header">
+			<div>
+				<p class="eyebrow">Skills</p>
+				<h2 id="skills">What I work with</h2>
+			</div>
+		</div>
+		<dl class="skills">
+			{
+				skills.map((group) => (
+					<div class="skill-row">
+						<dt>{group.group}</dt>
+						<dd>
+							<Chips items={group.items} outline label={group.group} />
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</section>
+
+	<section class="section" aria-labelledby="where">
+		<div class="section-header">
+			<div>
+				<p class="eyebrow">Experience</p>
+				<h2 id="where">Where I have worked</h2>
+			</div>
+			<a class="section-link" href="/experience">
+				Full work history
+				<Icon name="arrow-up-right" size={12} />
+			</a>
+		</div>
+		<ol class="roles">
+			{
+				experience.map((employer) => (
+					<li>
+						<div>
+							<div class="role-employer">
+								{employer.name}
+								{employer.descriptor && (
+									<span class="muted small"> · {employer.descriptor}</span>
+								)}
+							</div>
+							<div class="role-title">
+								{[...employer.roles].reverse().map((r) => r.title).join(" → ")}
+							</div>
+						</div>
+						<div class="role-date">
+							{employer.roles.length === 1
+								? employer.roles[0].date
+								: `${employer.roles[employer.roles.length - 1].date.split(" – ")[0]} – ${employer.roles[0].date.split(" – ")[1]}`}
+						</div>
+					</li>
+				))
+			}
+		</ol>
 	</section>
 </Layout>

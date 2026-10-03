@@ -1,0 +1,12 @@
+---
+interface Props {
+	items: readonly string[];
+	outline?: boolean;
+	label?: string;
+}
+
+const { items, outline = false, label } = Astro.props;
+---
+<ul class="chips" aria-label={label}>
+	{items.map((item) => <li class:list={["chip", { "chip-outline": outline }]}>{item}</li>)}
+</ul>
