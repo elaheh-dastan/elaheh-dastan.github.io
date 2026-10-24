@@ -70,12 +70,12 @@ was fixed; older releases (through `2024-04-25`) carry no assets at all.
 ## Cross-repo alignment (important)
 
 `elaheh-dastan/elaheh-dastan.pdf` is the **source of truth** for Elaheh's
-professional facts. Its Typst sources under `src/shared/*.typ` state the same
+professional facts. Its Typst sources under `src/sections/*.typ` state the same
 information this site does publicly, and the two must agree:
 
 | Repo | What it states |
 |---|---|
-| `elaheh-dastan.pdf` | Full resume — authoritative (`src/cv.typ`, `src/shared/*.typ`, `src/profile_spain/metadata.toml`) |
+| `elaheh-dastan.pdf` | Full resume — authoritative (`src/cv.typ`, `src/sections/*.typ`, `src/metadata.toml`) |
 | `elaheh-dastan.github.io` (here) | `src/data/*.ts` |
 | `elaheh-dastan` | GitHub profile README |
 
