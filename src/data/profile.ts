@@ -3,7 +3,7 @@
 // must stay in sync with it.
 export const profile = {
 	name: "Elaheh Dastan",
-	headline: "Senior Machine Learning Engineer",
+	headline: "Senior AI / ML Engineer",
 	tagline:
 		"I design and ship machine learning systems end to end: data pipelines, retrieval and recommendation models, and the evaluation frameworks that gate LLM agents into production.",
 	years: "9+",

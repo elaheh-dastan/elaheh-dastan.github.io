@@ -24,7 +24,7 @@ export const experience: Employer[] = [
 		location: "Barcelona, Spain · Remote",
 		roles: [
 			{
-				title: "Machine Learning Engineer",
+				title: "AI Engineer",
 				date: "May 2026 – Present",
 				bullets: [
 					"Build and own the LLM evaluation framework that assesses the outputs of Caterpillar's in-cab and in-cloud AI assistants, covering the judging methodology, the test corpus, and the release pipeline that gates every change.",
